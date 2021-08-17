@@ -1,0 +1,11 @@
+name
+population
+region
+subregion
+capital
+topLevelDomain //array
+currencies //array
+languages //array
+borders //array
+
+altSpellings

@@ -10,3 +10,8 @@ interface typeLanguage {
   name: string;
   nativeName: string;
 }
+
+interface typeBorder {
+  code: string;
+  name: string;
+}

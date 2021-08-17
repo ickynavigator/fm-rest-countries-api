@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { Button, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import BorderButton from "../components/BorderButton";
 
-import { CountryDetails, CountryName } from "../functions/countryFunctions";
+import {
+  CountryDetails,
+  MultipleCountryDetails,
+} from "../functions/countryFunctions";
 
 const CountryScreen: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -18,51 +22,14 @@ const CountryScreen: React.FC = () => {
   const [TLD, setTLD] = useState([""]);
   const [currency, setcurrency] = useState<typeCurrency[]>([]);
   const [languages, setlanguages] = useState<typeLanguage[]>([]);
-  const [borders, setborders] = useState([""]);
-
-  const [borderBtns, setborderBtns] = useState("");
-
-  const tldParser = (tld: string[]) => {
-    const lt = tld.length - 1;
-    return tld.reduce((acc, curr, ind) => {
-      return `${acc} ${curr}${lt !== ind ? `,` : ``}`;
-    }, "");
-  };
-
-  const languageParser = (languages: typeLanguage[]) => {
-    const lt = languages.length - 1;
-    return languages.reduce((acc, curr, ind) => {
-      return `${acc} ${curr.name}${lt !== ind ? `,` : ``}`;
-    }, "");
-  };
-
-  const currencyParser = (currencies: typeCurrency[]) => {
-    const lt = currencies.length - 1;
-    return currencies.reduce((acc, curr, ind) => {
-      return `${acc} ${curr.name}${lt !== ind ? `,` : ``}`;
-    }, "");
-  };
-
-  const borderParser = (borders: string[]) => {
-    if (borders.length > 0 && borders[0] !== "") {
-      borders.forEach(async (acc) => {
-        let name = await CountryName(acc);
-        console.log(name);
-        const btn = `<button><a href="/country/${acc}">${name}</a></button>`;
-        setborderBtns(borderBtns + btn);
-      });
-    }
-  };
+  const [borderNames, setborderNames] = useState<typeBorder[]>([]);
 
   const goBackBtn = () => {};
 
   useEffect(() => {
     const CD = async () => {
-      await CountryDetails(id).then((res) => {
-        console.log(res.data);
-
+      await CountryDetails(id).then(async (res) => {
         setflag(res.data.flag);
-
         setname(res.data.name);
         setnativeName(res.data.nativeName);
         setpopulation(res.data.population);
@@ -72,11 +39,19 @@ const CountryScreen: React.FC = () => {
         setTLD(res.data.topLevelDomain);
         setcurrency(res.data.currencies);
         setlanguages(res.data.languages);
-        setborders(res.data.borders);
 
-        borderParser(borders);
+        await MultipleCountryDetails(res.data.borders)
+          .then((res) => {
+            const bNames = res.data.map((curr: any) => {
+              return { code: curr.alpha3Code, name: curr.name };
+            });
+
+            setborderNames(bNames);
+          })
+          .catch((err) => console.error(err));
       });
     };
+
     CD();
   }, [id]);
 
@@ -120,23 +95,28 @@ const CountryScreen: React.FC = () => {
 
             <div>
               <span>Top Level Domain: </span>
-              <span>{tldParser(TLD)}</span>
+              <span>{TLD.join(", ")}</span>
             </div>
 
             <div>
               <span>Currencies: </span>
-              <span>{currencyParser(currency)}</span>
+              <span>{currency.map((e) => e.name).join(", ")}</span>
             </div>
 
             <div>
               <span>Languages: </span>
-              <span>{languageParser(languages)}</span>
+              <span>{languages.map((e) => e.name).join(", ")}</span>
             </div>
           </Row>
 
           <div>
             <span>Border Countries: </span>
-            <span>{borderBtns}</span>
+            <span>
+              {borderNames &&
+                borderNames.map((curr) => {
+                  return BorderButton(curr);
+                })}
+            </span>
           </div>
         </Col>
       </Row>

@@ -75,7 +75,7 @@ const CountryScreen: React.FC = () => {
 
             <div>
               <span>Population: </span>
-              <span>{population}</span>
+              <span>{population.toLocaleString()}</span>
             </div>
 
             <div>

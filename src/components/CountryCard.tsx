@@ -1,6 +1,6 @@
 import { Button, Card } from "react-bootstrap";
 
-const CountryCard = (country: any) => {
+const CountryCard = (country: typeCountry) => {
   const { flag, name, population, region, capital, alpha3Code } = country;
   return (
     <>

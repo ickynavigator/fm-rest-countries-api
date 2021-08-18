@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Row, Col } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+
 import BorderButton from "../components/BorderButton";
 
 import {
@@ -9,6 +10,8 @@ import {
 } from "../functions/countryFunctions";
 
 const CountryScreen: React.FC = () => {
+  let history = useHistory();
+
   const { id } = useParams<{ id: string }>();
   const [flag, setflag] = useState("");
 
@@ -18,13 +21,14 @@ const CountryScreen: React.FC = () => {
   const [region, setregion] = useState("");
   const [subRegion, setsubRegion] = useState("");
   const [capital, setcapital] = useState("");
-  //   Top Level Domain
-  const [TLD, setTLD] = useState([""]);
+  const [TLD, setTLD] = useState([""]); /**  Top Level Domain */
   const [currency, setcurrency] = useState<typeCurrency[]>([]);
   const [languages, setlanguages] = useState<typeLanguage[]>([]);
   const [borderNames, setborderNames] = useState<typeBorder[]>([]);
 
-  const goBackBtn = () => {};
+  const goBackBtn = () => {
+    history.goBack();
+  };
 
   useEffect(() => {
     const CD = async () => {
@@ -42,11 +46,11 @@ const CountryScreen: React.FC = () => {
 
         await MultipleCountryDetails(res.data.borders)
           .then((res) => {
-            const bNames = res.data.map((curr: any) => {
-              return { code: curr.alpha3Code, name: curr.name };
-            });
-
-            setborderNames(bNames);
+            setborderNames(
+              res.data.map((curr: typeCountry) => {
+                return { code: curr.alpha3Code, name: curr.name };
+              })
+            );
           })
           .catch((err) => console.error(err));
       });

@@ -1,8 +1,4 @@
-interface T {
-  code: string;
-  name: string;
-}
-const BorderButton: React.FC<T> = ({ code, name }) => {
+const BorderButton: React.FC<typeBorder> = ({ code, name }) => {
   return (
     <button key={code}>
       <a href={`/country/${code}`}>{name}</a>

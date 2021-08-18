@@ -1,3 +1,11 @@
+interface typeCountry {
+  flag: string;
+  name: string;
+  population: number;
+  region: string;
+  capital: string;
+  alpha3Code: string;
+}
 /** code: "EUR", name: "Euro", symbol: "€" */
 interface typeCurrency {
   code: string;
@@ -10,7 +18,6 @@ interface typeLanguage {
   name: string;
   nativeName: string;
 }
-
 interface typeBorder {
   code: string;
   name: string;

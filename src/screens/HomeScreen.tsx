@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import { AllCountryDetails } from "../functions/countryFunctions";
 const HomeScreen: React.FC = () => {
   const [loading, setloading] = useState(true);
-  const [countries, setcountries] = useState<any[]>([]);
+  const [countries, setcountries] = useState<typeCountry[]>([]);
 
   useEffect(() => {
     (async () => {

@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Row, Col } from "react-bootstrap";
+
 import CountryCard from "../components/CountryCard";
 import FilterSelect from "../components/FilterSelect";
 
@@ -31,7 +33,10 @@ const HomeScreen: React.FC = () => {
     (async () => {
       await AllCountryDetails(filter, search)
         .then((res) => {
-          setcountries(res.data);
+          const Countries = res.data;
+          const size = 20;
+
+          setcountries(Countries.slice(0, size));
         })
         .catch((err) => {
           console.error(err.message);
@@ -46,19 +51,25 @@ const HomeScreen: React.FC = () => {
 
   return (
     <>
-      <div>
-        <SearchBar setSearch={searchHandler} value={search} />
-        <FilterSelect options={options} setFilter={filterHandler} />
-      </div>
+      <Row className="py-5">
+        <Col>
+          <SearchBar setSearch={searchHandler} value={search} />
+        </Col>
+        <Col>
+          <FilterSelect options={options} setFilter={filterHandler} />
+        </Col>
+      </Row>
       {loading ? (
         <Loader />
       ) : errorMsg ? (
         <div>{errorMsg}</div>
       ) : (
-        // countries.map((country) => {
-        //   return CountryCard(country);
-        // })
-        CountryCard(countries[0])
+        <Row md={4} className="g-5">
+          {countries.map((country) => {
+            return <Col>{CountryCard(country)}</Col>;
+          })}
+        </Row>
+        // CountryCard(countries[0])
       )}
     </>
   );

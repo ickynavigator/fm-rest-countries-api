@@ -15,14 +15,14 @@ export const AllCountryDetails = (
   if (search) type = `name/${search}`;
 
   const url = `${countryApi}/${type}${fieldsHelper(fields)}`;
-
-  console.log(url);
   return axios.get(url);
 };
 
 export const CountryDetails = (id: string, fields?: string[]) => {
-  return axios.get(`${countryApi}/alpha/${id}${fieldsHelper(fields)}`);
+  const url = `${countryApi}/alpha/${id}${fieldsHelper(fields)}`;
+  return axios.get(url);
 };
 export const MultipleCountryDetails = (codes: string[]) => {
-  return axios.get(`${countryApi}/alpha${`/?codes=${codes.join(";")}`}`);
+  const url = `${countryApi}/alpha${`/?codes=${codes.join(";")}`}`;
+  return axios.get(url);
 };

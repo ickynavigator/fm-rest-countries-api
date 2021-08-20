@@ -8,7 +8,7 @@ const FilterSelect: React.FC<T> = (props) => {
   const { options, setFilter } = props;
 
   return (
-    <Form.Select onChange={setFilter}>
+    <Form.Select onChange={setFilter} className="ms-auto w-25">
       <option value={``}>Filter By Region</option>
 
       {options.map((option: string) => {

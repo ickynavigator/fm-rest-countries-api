@@ -8,14 +8,13 @@ const SearchBar: React.FC<T> = (props) => {
   const { value, setSearch } = props;
 
   return (
-    <Form.Group className="m-3">
-      <Form.Control
-        type="text"
-        placeholder="Search For a country..."
-        value={value}
-        onChange={setSearch}
-      />
-    </Form.Group>
+    <Form.Control
+      className="shadow-sm border-0 w-75"
+      type="text"
+      placeholder="Search For a country..."
+      value={value}
+      onChange={setSearch}
+    />
   );
 };
 

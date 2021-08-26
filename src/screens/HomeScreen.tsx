@@ -64,9 +64,9 @@ const HomeScreen: React.FC = () => {
       ) : errorMsg ? (
         <div>{errorMsg}</div>
       ) : (
-        <Row md={4} className="g-5">
+        <Row xs={1} md={4} className="g-5">
           {countries.map((country) => {
-            return <Col>{CountryCard(country)}</Col>;
+            return <Col key={country.alpha3Code}>{CountryCard(country)}</Col>;
           })}
         </Row>
         // CountryCard(countries[0])

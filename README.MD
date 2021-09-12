@@ -4,7 +4,7 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 
 ## Table of contents
 
-- [Frontend Mentor - Tip calculator app solution](#frontend-mentor---tip-calculator-app-solution)
+- [Frontend Mentor - REST Countries API](#Frontend-Mentor---REST-Countries-API-with-color-theme-switcher-solution)
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [The challenge](#the-challenge)
@@ -34,7 +34,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Github](https://github.com/ickynavigator/fm-rest-countries-api)
-- Live Site URL: [Vercel](https://ickynavigator.github.io/fm-tip-calculator-app/)
+- Live Site URL: [Vercel](https://fm-rest-countries-api.ickynavigator.vercel.app)
 
 ## My process
 

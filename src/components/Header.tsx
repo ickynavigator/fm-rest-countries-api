@@ -10,7 +10,9 @@ const Header: React.FC<T> = (props) => {
 
   return (
     <Navbar>
-      <Navbar.Brand href="/">Where in the world?</Navbar.Brand>
+      <Navbar.Brand href="/">
+        <h4>Where in the world?</h4>
+      </Navbar.Brand>
 
       <div className="ms-auto">
         <span onClick={themeHandler}>

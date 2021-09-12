@@ -1,4 +1,4 @@
-import { Form } from "react-bootstrap";
+import { FormSelect } from "react-bootstrap";
 
 interface T {
   options: string[];
@@ -8,7 +8,10 @@ const FilterSelect: React.FC<T> = (props) => {
   const { options, setFilter } = props;
 
   return (
-    <Form.Select onChange={setFilter} className="ms-auto w-25">
+    <FormSelect
+      onChange={setFilter}
+      className="ms-auto w-25 border-0 shadow-sm"
+    >
       <option value={``}>Filter By Region</option>
 
       {options.map((option: string) => {
@@ -18,7 +21,7 @@ const FilterSelect: React.FC<T> = (props) => {
           </option>
         );
       })}
-    </Form.Select>
+    </FormSelect>
   );
 };
 

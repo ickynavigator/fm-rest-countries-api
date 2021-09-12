@@ -1,4 +1,5 @@
-import { Form } from "react-bootstrap";
+import { FormControl, InputGroup } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface T {
   setSearch: (val: any) => void;
@@ -8,13 +9,18 @@ const SearchBar: React.FC<T> = (props) => {
   const { value, setSearch } = props;
 
   return (
-    <Form.Control
-      className="shadow-sm border-0 w-75"
-      type="text"
-      placeholder="Search For a country..."
-      value={value}
-      onChange={setSearch}
-    />
+    <InputGroup className="shadow-sm border-0 w-75">
+      <InputGroup.Text>
+        <FontAwesomeIcon icon={["fas", "search"]} />
+      </InputGroup.Text>
+
+      <FormControl
+        type="text"
+        placeholder="Search For a country..."
+        value={value}
+        onChange={setSearch}
+      />
+    </InputGroup>
   );
 };
 

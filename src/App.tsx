@@ -31,24 +31,24 @@ function App() {
   return (
     <>
       <Router>
-        <div className={`mainWrapper ${theme}`}>
-          <Container fluid className={`shadow-sm ps-5 pe-5 py-2`}>
+        <Container fluid className={`m-0 p-0 mainWrapper ${theme}`}>
+          <Container fluid className={`shadow-sm ps-5 pe-5 py-2`} as={`header`}>
             <Header theme={theme} themeHandler={themeHandler} />
           </Container>
 
           <Container fluid className={`ps-5 pe-5 h-100`}>
             <Switch>
               {/* Home Screen */}
-              <Route path="/country/:id" component={CountryScreen} exact />
+              <Route path={`/country/:id`} component={CountryScreen} exact />
 
               {/* Home Screen */}
-              <Route path="/" component={HomeScreen} exact />
+              <Route path={`/`} component={HomeScreen} exact />
 
               {/* 404 page */}
               <Route component={NotFoundScreen} />
             </Switch>
           </Container>
-        </div>
+        </Container>
       </Router>
     </>
   );

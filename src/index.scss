@@ -1,9 +1,43 @@
 @import "~bootstrap/scss/bootstrap";
 
 // Colors
-$Dark-Blue: hsl(209, 23%, 22%); // (Dark Mode Elements)
 $Very-Dark-Blue: hsl(207, 26%, 17%); // (Dark Mode Background)
-$Very-Dark-Blue: hsl(200, 15%, 8%); // (Light Mode Text)
-$Dark-Gray: hsl(0, 0%, 52%); // (Light Mode Input)
 $Very-Light-Gray: hsl(0, 0%, 98%); // (Light Mode Background)
+
+$Dark-Blue: hsl(209, 23%, 22%); // (Dark Mode Elements)
 $White: hsl(0, 0%, 100%); // (Dark Mode Text & Light Mode Elements)
+$Very-Dark-Blue-text: hsl(200, 15%, 8%); // (Light Mode Text)
+
+$Dark-Gray: hsl(0, 0%, 52%); // (Light Mode Input)
+
+.dark {
+  --body-bgColor: #{$Very-Dark-Blue};
+  --element-color: #{$Dark-Blue};
+  --text-color: #{$White};
+}
+
+.light {
+  --body-bgColor: #{$Very-Light-Gray};
+  --element-color: #{$White};
+  --text-color: #{$Very-Dark-Blue-text};
+}
+
+.mainWrapper {
+  background-color: var(--body-bgColor) !important;
+  color: var(--text-color) !important;
+}
+header {
+  background-color: var(--element-color) !important;
+  h4 {
+    color: var(--text-color) !important;
+  }
+}
+input,
+select {
+  background-color: var(--element-color) !important;
+  color: var(--text-color) !important;
+
+  &::-webkit-input-placeholder {
+    color: var(--text-color) !important;
+  }
+}

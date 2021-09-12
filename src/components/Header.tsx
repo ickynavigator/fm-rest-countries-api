@@ -1,18 +1,24 @@
 import { Navbar } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface T {
-  mode: boolean;
-  modeHandler: () => void;
+  theme: `light` | `dark`;
+  themeHandler: () => void;
 }
 const Header: React.FC<T> = (props) => {
-  const { mode, modeHandler } = props;
+  const { theme, themeHandler } = props;
 
   return (
     <Navbar>
       <Navbar.Brand href="/">Where in the world?</Navbar.Brand>
 
       <div className="ms-auto">
-        <span onClick={modeHandler}>Dark Mode: {mode ? "true" : "false"}</span>
+        <span onClick={themeHandler}>
+          <FontAwesomeIcon
+            icon={theme === "light" ? ["far", "moon"] : ["fas", "moon"]}
+          />{" "}
+          Dark Mode
+        </span>
       </div>
     </Navbar>
   );

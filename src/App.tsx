@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -20,18 +20,30 @@ function App() {
       ? `light`
       : `dark`
   );
+
   window
     .matchMedia("(prefers-color-scheme: light)")
-    .addEventListener("change", (e) => setTheme(e.matches ? `light` : `dark`));
+    .addEventListener("change", (e) => {
+      setTheme(e.matches ? `light` : `dark`);
+    });
 
   const themeHandler = () => {
     if (theme === `light`) setTheme(`dark`);
     else setTheme(`light`);
+
+    localStorage.setItem("currentTheme", theme);
   };
+
+  useEffect(() => {
+    localStorage.setItem("currentTheme", theme);
+    const currentTheme = localStorage.getItem("currentTheme");
+    if (currentTheme === "light" || currentTheme === "dark")
+      setTheme(currentTheme);
+  }, [theme]);
   return (
     <>
       <Router>
-        <Container fluid className={`m-0 p-0 mainWrapper ${theme}`}>
+        <Container fluid className={`m-0 p-0 mainWrapper ${theme} h-100`}>
           <Container fluid className={`shadow-sm ps-5 pe-5 py-2`} as={`header`}>
             <Header theme={theme} themeHandler={themeHandler} />
           </Container>

@@ -1,5 +1,15 @@
 @import "~bootstrap/scss/bootstrap";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#root {
+  width: 100%;
+  height: 100%;
+}
+
 // Colors
 $Very-Dark-Blue: hsl(207, 26%, 17%); // (Dark Mode Background)
 $Very-Light-Gray: hsl(0, 0%, 98%); // (Light Mode Background)
@@ -26,18 +36,36 @@ $Dark-Gray: hsl(0, 0%, 52%); // (Light Mode Input)
   background-color: var(--body-bgColor) !important;
   color: var(--text-color) !important;
 }
+
 header {
   background-color: var(--element-color) !important;
   h4 {
     color: var(--text-color) !important;
   }
 }
+
 input,
+.input-pre,
 select {
   background-color: var(--element-color) !important;
   color: var(--text-color) !important;
 
-  &::-webkit-input-placeholder {
+  &::placeholder {
     color: var(--text-color) !important;
+  }
+}
+select::after {
+  filter: invert(100%);
+  color: var(--text-color) !important;
+}
+.card {
+  border: none;
+
+  & > a {
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: var(--element-color) !important;
+    color: var(--text-color) !important;
+    border: none;
   }
 }

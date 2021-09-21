@@ -10,12 +10,13 @@ const SearchBar: React.FC<T> = (props) => {
 
   return (
     <InputGroup className="shadow-sm border-0 w-75">
-      <InputGroup.Text>
+      <InputGroup.Text className="border-0 input-pre ps-4">
         <FontAwesomeIcon icon={["fas", "search"]} />
       </InputGroup.Text>
 
       <FormControl
         type="text"
+        className="border-0 p-3"
         placeholder="Search For a country..."
         value={value}
         onChange={setSearch}

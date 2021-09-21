@@ -64,9 +64,13 @@ const HomeScreen: React.FC = () => {
       ) : errorMsg ? (
         <div>{errorMsg}</div>
       ) : (
-        <Row xs={1} md={4} className="g-5">
+        <Row xs={1} sm={2} md={3} lg={4} className={`g-5`}>
           {countries.map((country) => {
-            return <Col key={country.alpha3Code}>{CountryCard(country)}</Col>;
+            return (
+              <Col className={`h-100 d-flex`} key={country.alpha3Code}>
+                {CountryCard(country)}
+              </Col>
+            );
           })}
         </Row>
         // CountryCard(countries[0])

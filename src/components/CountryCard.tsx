@@ -4,7 +4,10 @@ const CountryCard = (country: typeCountry) => {
   let { flag, name, population, region, capital, alpha3Code } = country;
   // console.log(flag);
   return (
-    <Card style={{ width: "100%", height: "100%" }}>
+    <Card
+      className={`flex-fill`}
+      // style={{ width: "100%", height: "100%" }}
+    >
       <Button
         href={`/country/${alpha3Code}`}
         className="text-decoration-none  w-100"

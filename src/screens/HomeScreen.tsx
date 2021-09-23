@@ -51,7 +51,7 @@ const HomeScreen: React.FC = () => {
 
   return (
     <>
-      <Row className="py-5">
+      <Row className="py-5" sm={1} md={2}>
         <Col>
           <SearchBar setSearch={searchHandler} value={search} />
         </Col>

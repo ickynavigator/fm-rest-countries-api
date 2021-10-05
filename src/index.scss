@@ -12,6 +12,7 @@ body {
 }
 #root {
   height: 100%;
+  overflow-x: hidden;
 }
 
 // Colors
@@ -36,8 +37,11 @@ $Dark-Gray: hsl(0, 0%, 52%); // (Light Mode Input)
   --text-color: #{$Very-Dark-Blue-text};
 }
 
-.mainWrapper {
+body,
+#root {
   background-color: var(--body-bgColor) !important;
+}
+.mainWrapper {
   color: var(--text-color) !important;
 }
 

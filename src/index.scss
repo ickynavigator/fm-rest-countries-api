@@ -31,11 +31,15 @@ header {
 
 input,
 .input-pre,
-select {
+select,
+button {
   background-color: var(--element-color) !important;
   color: var(--text-color) !important;
 
   &::placeholder {
+    color: var(--text-color) !important;
+  }
+  a {
     color: var(--text-color) !important;
   }
 }
@@ -57,6 +61,30 @@ select.form-select {
   }
 }
 
+div.countryRow {
+  div {
+    span:nth-child(1) {
+      font-weight: bold;
+    }
+    span:nth-child(2) {
+      opacity: 0.5;
+    }
+  }
+}
+.__title-span {
+  font-weight: bold;
+}
+.__body-span {
+  & > button {
+    opacity: 0.5;
+    transition: 3ms ease-in-out;
+    &:active,
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
 @include xs {
   .__search-bar {
     width: 100%;
@@ -73,5 +101,9 @@ select.form-select {
   }
   .__filter-select {
     width: 25%;
+  }
+  .__country-image {
+    height: 400px;
+    width: 600px;
   }
 }

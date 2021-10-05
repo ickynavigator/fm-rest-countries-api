@@ -1,8 +1,12 @@
+import { Button } from 'react-bootstrap';
+
 const BorderButton: React.FC<typeBorder> = ({ code, name }) => {
   return (
-    <button key={code}>
-      <a href={`/country/${code}`}>{name}</a>
-    </button>
+    <Button key={code} className={`m-1 py-1 __my-button shadow border-0`}>
+      <a href={`/country/${code}`} className={`text-decoration-none`}>
+        {name}
+      </a>
+    </Button>
   );
 };
 

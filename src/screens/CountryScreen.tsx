@@ -1,5 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import { Button, Row, Col } from 'react-bootstrap';
+import { Button, Row, Col, Container } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom';
 
 import BorderButton from '../components/BorderButton';
@@ -33,7 +34,7 @@ const CountryScreen: React.FC = () => {
   useEffect(() => {
     const CD = async () => {
       await CountryDetails(id).then(async res => {
-        setflag(res.data.flag);
+        setflag(res.data.flags.png);
         setname(res.data.name);
         setnativeName(res.data.nativeName);
         setpopulation(res.data.population);
@@ -46,9 +47,9 @@ const CountryScreen: React.FC = () => {
 
         if (res.data.borders) {
           await MultipleCountryDetails(res.data.borders)
-            .then(res => {
+            .then(countries => {
               setborderNames(
-                res.data.map((curr: typeCountry) => {
+                countries.data.map((curr: typeCountry) => {
                   return { code: curr.alpha3Code, name: curr.name };
                 }),
               );
@@ -62,68 +63,80 @@ const CountryScreen: React.FC = () => {
   }, [id]);
 
   return (
-    <>
-      <Button onClick={goBackBtn}>Back</Button>
+    <Container className={`px-3`}>
+      <Button
+        onClick={goBackBtn}
+        className={`px-4 my-4 __my-button shadow border-0`}
+      >
+        <FontAwesomeIcon icon={['fas', 'long-arrow-alt-left']} />
+        <span className={`ps-3`}>Back</span>
+      </Button>
       <br />
-      <Row>
-        <Col xs={12} md={6}>
-          <img src={flag} alt={name} />
+      <Row className={`pt-5`}>
+        <Col xs={12} md={6} className={``}>
+          <img src={flag} alt={name} className={`__country-image`} />
         </Col>
-        <Col xs={12} md={6}>
+        <Col xs={12} md={6} className={`ps-5 my-auto`}>
           <h3>{name}</h3>
-          <Row>
-            <Col></Col>
-            <Col></Col>
-            <div>
-              <span>Native Name: </span>
-              <span>{nativeName}</span>
-            </div>
+          <Row className={`pt-3 pb-5 countryRow`}>
+            <Col>
+              <div>
+                <span>Native Name: </span>
+                <span>{nativeName}</span>
+              </div>
 
-            <div>
-              <span>Population: </span>
-              <span>{population.toLocaleString()}</span>
-            </div>
+              <div>
+                <span>Population: </span>
+                <span>{population.toLocaleString()}</span>
+              </div>
 
-            <div>
-              <span>Region: </span>
-              <span>{region}</span>
-            </div>
+              <div>
+                <span>Region: </span>
+                <span>{region}</span>
+              </div>
 
-            <div>
-              <span>Sub Region: </span>
-              <span>{subRegion}</span>
-            </div>
+              <div>
+                <span>Sub Region: </span>
+                <span>{subRegion}</span>
+              </div>
 
-            <div>
-              <span>Capital: </span>
-              <span>{capital}</span>
-            </div>
+              <div>
+                <span>Capital: </span>
+                <span>{capital}</span>
+              </div>
+            </Col>
 
-            <div>
-              <span>Top Level Domain: </span>
-              <span>{TLD.join(', ')}</span>
-            </div>
+            <Col>
+              <div>
+                <span>Top Level Domain: </span>
+                <span>{TLD.join(', ')}</span>
+              </div>
 
-            <div>
-              <span>Currencies: </span>
-              <span>{currency.map(e => e.name).join(', ')}</span>
-            </div>
+              <div>
+                <span>Currencies: </span>
+                <span>{currency.map(e => e.name).join(', ')}</span>
+              </div>
 
-            <div>
-              <span>Languages: </span>
-              <span>{languages.map(e => e.name).join(', ')}</span>
-            </div>
+              <div>
+                <span>Languages: </span>
+                <span>{languages.map(e => e.name).join(', ')}</span>
+              </div>
+            </Col>
           </Row>
 
           {borderNames.length > 0 && (
-            <div>
-              <span>Border Countries: </span>
-              <span>{borderNames.map(curr => BorderButton(curr))}</span>
-            </div>
+            <Row className={`pt-1`}>
+              <Col sm={4} className={`__title-span my-auto`}>
+                Border Countries:
+              </Col>
+              <Col className={`__body-span mx-0 px-0 my-auto`}>
+                {borderNames.map(curr => BorderButton(curr))}
+              </Col>
+            </Row>
           )}
         </Col>
       </Row>
-    </>
+    </Container>
   );
 };
 

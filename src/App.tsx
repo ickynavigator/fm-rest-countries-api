@@ -15,12 +15,12 @@ import NotFoundScreen from './screens/NotFoundScreen';
 
 library.add(fas, far);
 function App() {
-  // const [theme, setTheme] = useState<`light` | `dark`>(
-  //   window.matchMedia('(prefers-color-scheme: light)').matches
-  //     ? `light`
-  //     : `dark`,
-  // );
-  const [theme, setTheme] = useState<`light` | `dark`>(`light`);
+  const [theme, setTheme] = useState<`light` | `dark`>(
+    window.matchMedia('(prefers-color-scheme: light)').matches
+      ? `light`
+      : `dark`,
+  );
+  // const [theme, setTheme] = useState<`light` | `dark`>(`light`);
   // localStorage.setItem('currentTheme', theme);
 
   // window

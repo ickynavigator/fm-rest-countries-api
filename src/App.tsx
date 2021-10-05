@@ -48,7 +48,7 @@ function App() {
             <Header theme={theme} themeHandler={themeHandler} />
           </Container>
 
-          <Container fluid className={`ps-5 pe-5 h-100`}>
+          <Container fluid className={`ps-5 pe-5`}>
             <Switch>
               {/* Home Screen */}
               <Route path={`/country/:id`} component={CountryScreen} exact />

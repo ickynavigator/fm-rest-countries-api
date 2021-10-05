@@ -1,8 +1,8 @@
 import { Button, Card } from 'react-bootstrap';
 
 const CountryCard = (country: typeCountry) => {
-  let { flag, name, population, region, capital, alpha3Code } = country;
-  // console.log(flag);
+  let { flags, name, population, region, capital, alpha3Code } = country;
+
   return (
     <Card
       className={`flex-fill`}
@@ -10,16 +10,16 @@ const CountryCard = (country: typeCountry) => {
     >
       <Button
         href={`/country/${alpha3Code}`}
-        className="text-decoration-none  w-100"
+        className="text-decoration-none p-0 w-100"
         variant="light"
       >
         <div>
           <div className="h-25">
             <Card.Img
               variant="top"
-              src={flag}
-              className="card-svg h-100 w-100"
-              as="svg"
+              src={flags.png}
+              className="w-100"
+              height="195px"
             />
           </div>
 

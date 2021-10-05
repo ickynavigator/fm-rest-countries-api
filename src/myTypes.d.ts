@@ -1,5 +1,9 @@
 interface typeCountry {
   flag: string;
+  flags: {
+    png: string;
+    svg: string;
+  };
   name: string;
   population: number;
   region: string;

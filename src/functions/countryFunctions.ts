@@ -1,5 +1,5 @@
 import axios from 'axios';
-const countryApi = `https://restcountries.eu/rest/v2`;
+const countryApi = `https://restcountries.com/v2`;
 
 const fieldsHelper = (fields: string[] | undefined) => {
   return fields ? `?fields=${fields.join(';')}` : ``;

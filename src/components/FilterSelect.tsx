@@ -1,10 +1,10 @@
-import { FormSelect } from "react-bootstrap";
+import { FormSelect } from 'react-bootstrap';
 
 interface T {
   options: string[];
   setFilter: (val: any) => void;
 }
-const FilterSelect: React.FC<T> = (props) => {
+const FilterSelect: React.FC<T> = props => {
   const { options, setFilter } = props;
 
   return (

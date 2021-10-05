@@ -1,29 +1,29 @@
-import { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
+import { useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
 // components
-import Header from "./components/Header";
+import Header from './components/Header';
 
 // Screens
-import CountryScreen from "./screens/CountryScreen";
-import HomeScreen from "./screens/HomeScreen";
-import NotFoundScreen from "./screens/NotFoundScreen";
+import CountryScreen from './screens/CountryScreen';
+import HomeScreen from './screens/HomeScreen';
+import NotFoundScreen from './screens/NotFoundScreen';
 
 library.add(fas, far);
 function App() {
   const [theme, setTheme] = useState<`light` | `dark`>(
-    window.matchMedia("(prefers-color-scheme: light)").matches
+    window.matchMedia('(prefers-color-scheme: light)').matches
       ? `light`
-      : `dark`
+      : `dark`,
   );
 
   window
-    .matchMedia("(prefers-color-scheme: light)")
-    .addEventListener("change", (e) => {
+    .matchMedia('(prefers-color-scheme: light)')
+    .addEventListener('change', e => {
       setTheme(e.matches ? `light` : `dark`);
     });
 
@@ -31,13 +31,13 @@ function App() {
     if (theme === `light`) setTheme(`dark`);
     else setTheme(`light`);
 
-    localStorage.setItem("currentTheme", theme);
+    localStorage.setItem('currentTheme', theme);
   };
 
   useEffect(() => {
-    localStorage.setItem("currentTheme", theme);
-    const currentTheme = localStorage.getItem("currentTheme");
-    if (currentTheme === "light" || currentTheme === "dark")
+    localStorage.setItem('currentTheme', theme);
+    const currentTheme = localStorage.getItem('currentTheme');
+    if (currentTheme === 'light' || currentTheme === 'dark')
       setTheme(currentTheme);
   }, [theme]);
   return (

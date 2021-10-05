@@ -1,14 +1,14 @@
-import axios from "axios";
+import axios from 'axios';
 const countryApi = `https://restcountries.eu/rest/v2`;
 
 const fieldsHelper = (fields: string[] | undefined) => {
-  return fields ? `?fields=${fields.join(";")}` : ``;
+  return fields ? `?fields=${fields.join(';')}` : ``;
 };
 
 export const AllCountryDetails = (
   region: string,
   search: string,
-  fields?: string[]
+  fields?: string[],
 ) => {
   let type = `all`;
   if (region) type = `region/${region}`;
@@ -23,6 +23,6 @@ export const CountryDetails = (id: string, fields?: string[]) => {
   return axios.get(url);
 };
 export const MultipleCountryDetails = (codes: string[]) => {
-  const url = `${countryApi}/alpha${`/?codes=${codes.join(";")}`}`;
+  const url = `${countryApi}/alpha${`/?codes=${codes.join(';')}`}`;
   return axios.get(url);
 };

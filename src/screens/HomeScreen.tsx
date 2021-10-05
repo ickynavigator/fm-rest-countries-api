@@ -34,7 +34,8 @@ const HomeScreen: React.FC = () => {
       await AllCountryDetails(filter, search)
         .then(res => {
           const Countries = res.data;
-          const size = 20;
+          const size =
+            process.env.NODE_ENV !== 'production' ? 20 : Countries.length;
 
           setcountries(Countries.slice(0, size));
         })

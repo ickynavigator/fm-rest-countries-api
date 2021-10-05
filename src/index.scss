@@ -1,9 +1,30 @@
 @import '~bootstrap/scss/bootstrap';
+// Colors
+$Very-Dark-Blue: hsl(207, 26%, 17%); // (Dark Mode Background)
+$Very-Light-Gray: hsl(0, 0%, 98%); // (Light Mode Background)
 
+$Dark-Blue: hsl(209, 23%, 22%); // (Dark Mode Elements)
+$White: hsl(0, 0%, 100%); // (Dark Mode Text & Light Mode Elements)
+$Very-Dark-Blue-text: hsl(200, 15%, 8%); // (Light Mode Text)
+
+$Dark-Gray: hsl(0, 0%, 52%); // (Light Mode Input)
+
+@mixin darkStyles {
+  --body-bgColor: #{$Very-Dark-Blue};
+  --element-color: #{$Dark-Blue};
+  --text-color: #{$White};
+}
+
+@mixin lightStyles {
+  --body-bgColor: #{$Very-Light-Gray};
+  --element-color: #{$White};
+  --text-color: #{$Very-Dark-Blue-text};
+}
+
+// Reset css
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 html,
 body {
@@ -15,26 +36,12 @@ body {
   overflow-x: hidden;
 }
 
-// Colors
-$Very-Dark-Blue: hsl(207, 26%, 17%); // (Dark Mode Background)
-$Very-Light-Gray: hsl(0, 0%, 98%); // (Light Mode Background)
-
-$Dark-Blue: hsl(209, 23%, 22%); // (Dark Mode Elements)
-$White: hsl(0, 0%, 100%); // (Dark Mode Text & Light Mode Elements)
-$Very-Dark-Blue-text: hsl(200, 15%, 8%); // (Light Mode Text)
-
-$Dark-Gray: hsl(0, 0%, 52%); // (Light Mode Input)
-
 .dark {
-  --body-bgColor: #{$Very-Dark-Blue};
-  --element-color: #{$Dark-Blue};
-  --text-color: #{$White};
+  @include darkStyles;
 }
 
 .light {
-  --body-bgColor: #{$Very-Light-Gray};
-  --element-color: #{$White};
-  --text-color: #{$Very-Dark-Blue-text};
+  @include lightStyles;
 }
 
 body,

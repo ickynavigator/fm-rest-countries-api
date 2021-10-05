@@ -1,4 +1,4 @@
-interface typeCountry {
+export interface typeCountry {
   flag: string;
   flags: {
     png: string;
@@ -11,18 +11,20 @@ interface typeCountry {
   alpha3Code: string;
 }
 /** code: "EUR", name: "Euro", symbol: "€" */
-interface typeCurrency {
+export interface typeCurrency {
   code: string;
   name: string;
   symbol: string;
 }
-interface typeLanguage {
+export interface typeLanguage {
+  // eslint-disable-next-line camelcase
   iso639_1: string;
+  // eslint-disable-next-line camelcase
   iso639_2: string;
   name: string;
   nativeName: string;
 }
-interface typeBorder {
+export interface typeBorder {
   code: string;
   name: string;
 }

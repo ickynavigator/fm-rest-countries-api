@@ -1,8 +1,10 @@
+import React from 'react';
 import { FormSelect, InputGroup } from 'react-bootstrap';
 
 interface T {
   options: string[];
-  setFilter: (val: any) => void;
+  // eslint-disable-next-line no-unused-vars
+  setFilter: (event: React.FormEvent<HTMLSelectElement>) => void;
 }
 const FilterSelect: React.FC<T> = props => {
   const { options, setFilter } = props;
@@ -15,15 +17,13 @@ const FilterSelect: React.FC<T> = props => {
         onChange={setFilter}
         className={` border-0 shadow-sm h-100 py-3 w-100`}
       >
-        <option value={``}>Filter By Region</option>
+        <option value="">Filter By Region</option>
 
-        {options.map((option: string) => {
-          return (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          );
-        })}
+        {options.map((option: string) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
       </FormSelect>
     </InputGroup>
   );

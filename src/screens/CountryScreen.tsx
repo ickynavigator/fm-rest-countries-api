@@ -1,5 +1,5 @@
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
 import { Button, Row, Col, Container } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom';
 
@@ -9,9 +9,15 @@ import {
   CountryDetails,
   MultipleCountryDetails,
 } from '../functions/countryFunctions';
+import {
+  typeBorder,
+  typeCountry,
+  typeCurrency,
+  typeLanguage,
+} from '../myTypes';
 
 const CountryScreen: React.FC = () => {
-  let history = useHistory();
+  const history = useHistory();
 
   const { id } = useParams<{ id: string }>();
   const [flag, setflag] = useState('');
@@ -46,15 +52,15 @@ const CountryScreen: React.FC = () => {
         setlanguages(res.data.languages);
 
         if (res.data.borders) {
-          await MultipleCountryDetails(res.data.borders)
-            .then(countries => {
-              setborderNames(
-                countries.data.map((curr: typeCountry) => {
-                  return { code: curr.alpha3Code, name: curr.name };
-                }),
-              );
-            })
-            .catch(err => console.error(err));
+          await MultipleCountryDetails(res.data.borders).then(countries => {
+            setborderNames(
+              countries.data.map((curr: typeCountry) => ({
+                code: curr.alpha3Code,
+                name: curr.name,
+              })),
+            );
+          });
+          // .catch(err => console.error(err));
         }
       });
     };
@@ -63,22 +69,22 @@ const CountryScreen: React.FC = () => {
   }, [id]);
 
   return (
-    <Container className={`px-3`}>
+    <Container className="px-3">
       <Button
         onClick={goBackBtn}
-        className={`px-4 my-1 my-md-4 __my-button shadow border-0`}
+        className="px-4 my-1 my-md-4 __my-button shadow border-0"
       >
         <FontAwesomeIcon icon={['fas', 'long-arrow-alt-left']} />
-        <span className={`ps-3`}>Back</span>
+        <span className="ps-3">Back</span>
       </Button>
       <br />
-      <Row className={`pt-5`}>
-        <Col xs={12} md={6} className={``}>
-          <img src={flag} alt={name} className={`__country-image`} />
+      <Row className="pt-5">
+        <Col xs={12} md={6} className="">
+          <img src={flag} alt={name} className="__country-image" />
         </Col>
-        <Col xs={12} md={6} className={`ps-sm-5 pt-5 pt-sm-0 my-auto`}>
+        <Col xs={12} md={6} className="ps-sm-5 pt-5 pt-sm-0 my-auto">
           <h3>{name}</h3>
-          <Row className={`pt-3 pb-5 countryRow`}>
+          <Row className="pt-3 pb-5 countryRow">
             <Col xs={12} md={6}>
               <div>
                 <span>Native Name: </span>
@@ -106,7 +112,7 @@ const CountryScreen: React.FC = () => {
               </div>
             </Col>
 
-            <Col xs={12} md={6} className={`pt-5 pt-sm-0`}>
+            <Col xs={12} md={6} className="pt-5 pt-sm-0">
               <div>
                 <span>Top Level Domain: </span>
                 <span>{TLD.join(', ')}</span>
@@ -125,11 +131,11 @@ const CountryScreen: React.FC = () => {
           </Row>
 
           {borderNames.length > 0 && (
-            <Row className={`pt-1`}>
-              <Col sm={4} className={`__title-span my-auto`}>
+            <Row className="pt-1">
+              <Col sm={4} className="__title-span my-auto">
                 Border Countries:
               </Col>
-              <Col className={`__body-span mx-0 px-0 my-auto`}>
+              <Col className="__body-span mx-0 px-0 my-auto">
                 {borderNames.map(curr => BorderButton(curr))}
               </Col>
             </Row>

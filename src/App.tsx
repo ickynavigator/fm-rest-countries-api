@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -50,22 +50,18 @@ function App() {
   return (
     <>
       <Router>
-        <Container fluid className={`m-0 p-0 mainWrapper h-100`}>
-          <Container
-            fluid
-            className={`shadow-sm m-0 px-sm-5 py-2`}
-            as={`header`}
-          >
+        <Container fluid className="m-0 p-0 mainWrapper h-100">
+          <Container fluid className="shadow-sm m-0 px-sm-5 py-2" as="header">
             <Header theme={theme} themeHandler={themeHandler} />
           </Container>
 
-          <Container fluid className={`p-5 px-3 p-md-5`}>
+          <Container fluid className="p-5 px-3 p-md-5">
             <Switch>
               {/* Home Screen */}
-              <Route path={`/country/:id`} component={CountryScreen} exact />
+              <Route path="/country/:id" component={CountryScreen} exact />
 
               {/* Home Screen */}
-              <Route path={`/`} component={HomeScreen} exact />
+              <Route path="/" component={HomeScreen} exact />
 
               {/* 404 page */}
               <Route component={NotFoundScreen} />

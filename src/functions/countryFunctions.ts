@@ -1,9 +1,9 @@
 import axios from 'axios';
+
 const countryApi = `https://restcountries.com/v2`;
 
-const fieldsHelper = (fields: string[] | undefined) => {
-  return fields ? `?fields=${fields.join(';')}` : ``;
-};
+const fieldsHelper = (fields: string[] | undefined) =>
+  fields ? `?fields=${fields.join(';')}` : ``;
 
 export const AllCountryDetails = (
   region: string,

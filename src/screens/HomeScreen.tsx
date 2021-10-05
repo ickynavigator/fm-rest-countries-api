@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 import CountryCard from '../components/CountryCard';
@@ -8,6 +8,7 @@ import Loader from '../components/Loader';
 import SearchBar from '../components/SearchBar';
 
 import { AllCountryDetails } from '../functions/countryFunctions';
+import { typeCountry } from '../myTypes';
 
 const HomeScreen: React.FC = () => {
   const [loading, setloading] = useState(true);
@@ -19,9 +20,9 @@ const HomeScreen: React.FC = () => {
   // const options = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   const options = ['Africa', 'Americ', 'Asia', 'Europe', 'Oceania'];
 
-  const filterHandler = (val: React.ChangeEvent<HTMLSelectElement>) => {
+  const filterHandler = (val: React.FormEvent<HTMLSelectElement>) => {
     setsearch('');
-    setfilter(val.target.value);
+    setfilter(val.currentTarget.value);
   };
   const searchHandler = (val: React.ChangeEvent<HTMLInputElement>) => {
     setfilter('');
@@ -40,7 +41,7 @@ const HomeScreen: React.FC = () => {
           setcountries(Countries.slice(0, size));
         })
         .catch(err => {
-          console.error(err.message);
+          // console.error(err.message);
           if (err.message === `Network Error`) seterrorMsg(`Network Error`);
           if (/404/.test(err.message)) seterrorMsg(`No Countries Found`);
         })
@@ -52,7 +53,7 @@ const HomeScreen: React.FC = () => {
 
   return (
     <>
-      <Row className={`pb-5 gy-5`} xs={1} md={2}>
+      <Row className="pb-5 gy-5" xs={1} md={2}>
         <Col>
           <SearchBar setSearch={searchHandler} value={search} />
         </Col>
@@ -60,20 +61,17 @@ const HomeScreen: React.FC = () => {
           <FilterSelect options={options} setFilter={filterHandler} />
         </Col>
       </Row>
-      {loading ? (
-        <Loader />
-      ) : errorMsg ? (
+      {loading && <Loader />}
+      {errorMsg ? (
         <div>{errorMsg}</div>
       ) : (
-        <div className={`px-3 p-md-0`}>
-          <Row xs={1} sm={2} md={3} lg={4} className={`g-5 p-5 p-sm-0 pt-0`}>
-            {countries.map(country => {
-              return (
-                <Col className={`h-100 d-flex`} key={country.alpha3Code}>
-                  {CountryCard(country)}
-                </Col>
-              );
-            })}
+        <div className="px-3 p-md-0">
+          <Row xs={1} sm={2} md={3} lg={4} className="g-5 p-5 p-sm-0 pt-0">
+            {countries.map(country => (
+              <Col className="h-100 d-flex" key={country.alpha3Code}>
+                {CountryCard({ country })}
+              </Col>
+            ))}
           </Row>
         </div>
       )}

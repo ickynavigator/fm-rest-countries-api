@@ -23,6 +23,6 @@ export const CountryDetails = (id: string, fields?: string[]) => {
   return axios.get(url);
 };
 export const MultipleCountryDetails = (codes: string[]) => {
-  const url = `${countryApi}/alpha${`/?codes=${codes.join(';')}`}`;
+  const url = `${countryApi}/alpha${`/?codes=${codes.join(',')}`}`;
   return axios.get(url);
 };

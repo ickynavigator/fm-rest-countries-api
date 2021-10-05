@@ -1,0 +1,5 @@
+**/design
+**/dist
+**/build
+**/node_modules
+**/.husky

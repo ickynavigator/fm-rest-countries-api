@@ -53,13 +53,13 @@ function App() {
         <Container fluid className={`m-0 p-0 mainWrapper h-100`}>
           <Container
             fluid
-            className={`shadow-sm m-0 ps-5 pe-5 py-2`}
+            className={`shadow-sm m-0 px-sm-5 py-2`}
             as={`header`}
           >
             <Header theme={theme} themeHandler={themeHandler} />
           </Container>
 
-          <Container fluid className={`ps-5 pe-5 pb-5`}>
+          <Container fluid className={`p-4 p-sm-5 pt-5`}>
             <Switch>
               {/* Home Screen */}
               <Route path={`/country/:id`} component={CountryScreen} exact />

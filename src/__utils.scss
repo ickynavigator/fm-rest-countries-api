@@ -1,0 +1,52 @@
+// Colors
+$Very-Dark-Blue: hsl(207, 26%, 17%); // (Dark Mode Background)
+$Very-Light-Gray: hsl(0, 0%, 98%); // (Light Mode Background)
+
+$Dark-Blue: hsl(209, 23%, 22%); // (Dark Mode Elements)
+$White: hsl(0, 0%, 100%); // (Dark Mode Text & Light Mode Elements)
+$Very-Dark-Blue-text: hsl(200, 15%, 8%); // (Light Mode Text)
+
+$Dark-Gray: hsl(0, 0%, 52%); // (Light Mode Input)
+
+$Light-Arrow: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+$Dark-Arrow: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+
+$screen-xs-max: 375px;
+$screen-sm-max: 768px;
+$screen-md-max: 992px;
+$screen-lg-max: 1200px;
+
+@mixin xs {
+  @media (min-width: #{$screen-xs-max}) {
+    @content;
+  }
+}
+@mixin sm {
+  @media (min-width: #{$screen-sm-max}) {
+    @content;
+  }
+}
+@mixin md {
+  @media (min-width: #{$screen-md-max}) {
+    @content;
+  }
+}
+@mixin lg {
+  @media (min-width: #{$screen-lg-max}) {
+    @content;
+  }
+}
+
+@mixin darkStyles {
+  --body-bgColor: #{$Very-Dark-Blue};
+  --element-color: #{$Dark-Blue};
+  --text-color: #{$White};
+  --arrow-color: #{$Light-Arrow};
+}
+
+@mixin lightStyles {
+  --body-bgColor: #{$Very-Light-Gray};
+  --element-color: #{$White};
+  --text-color: #{$Very-Dark-Blue-text};
+  --arrow-color: #{$Dark-Arrow};
+}

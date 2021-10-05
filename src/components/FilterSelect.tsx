@@ -1,4 +1,4 @@
-import { FormSelect } from 'react-bootstrap';
+import { FormSelect, InputGroup } from 'react-bootstrap';
 
 interface T {
   options: string[];
@@ -8,20 +8,24 @@ const FilterSelect: React.FC<T> = props => {
   const { options, setFilter } = props;
 
   return (
-    <FormSelect
-      onChange={setFilter}
-      className="ms-auto w-25 border-0 shadow-sm"
+    <InputGroup
+      className={`ms-md-auto shadow-sm border-0 w-50 __filter-select `}
     >
-      <option value={``}>Filter By Region</option>
+      <FormSelect
+        onChange={setFilter}
+        className={` border-0 shadow-sm h-100 py-3 w-100`}
+      >
+        <option value={``}>Filter By Region</option>
 
-      {options.map((option: string) => {
-        return (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        );
-      })}
-    </FormSelect>
+        {options.map((option: string) => {
+          return (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          );
+        })}
+      </FormSelect>
+    </InputGroup>
   );
 };
 

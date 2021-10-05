@@ -9,7 +9,7 @@ const SearchBar: React.FC<T> = props => {
   const { value, setSearch } = props;
 
   return (
-    <InputGroup className="shadow-sm border-0 w-75">
+    <InputGroup className="shadow-sm border-0 __search-bar">
       <InputGroup.Text className="border-0 input-pre ps-4">
         <FontAwesomeIcon icon={['fas', 'search']} />
       </InputGroup.Text>

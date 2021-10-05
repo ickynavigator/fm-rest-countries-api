@@ -1,36 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
-// Colors
-$Very-Dark-Blue: hsl(207, 26%, 17%); // (Dark Mode Background)
-$Very-Light-Gray: hsl(0, 0%, 98%); // (Light Mode Background)
+@import './_utils';
 
-$Dark-Blue: hsl(209, 23%, 22%); // (Dark Mode Elements)
-$White: hsl(0, 0%, 100%); // (Dark Mode Text & Light Mode Elements)
-$Very-Dark-Blue-text: hsl(200, 15%, 8%); // (Light Mode Text)
-
-$Dark-Gray: hsl(0, 0%, 52%); // (Light Mode Input)
-
-@mixin darkStyles {
-  --body-bgColor: #{$Very-Dark-Blue};
-  --element-color: #{$Dark-Blue};
-  --text-color: #{$White};
-}
-
-@mixin lightStyles {
-  --body-bgColor: #{$Very-Light-Gray};
-  --element-color: #{$White};
-  --text-color: #{$Very-Dark-Blue-text};
-}
-
-// Reset css
-* {
-  margin: 0;
-  padding: 0;
-}
-html,
-body {
-  width: 100vw;
-  height: 100vh;
-}
 #root {
   height: 100%;
   overflow-x: hidden;
@@ -69,10 +39,12 @@ select {
     color: var(--text-color) !important;
   }
 }
-select::after {
-  filter: invert(100%);
-  color: var(--text-color) !important;
+
+select.form-select {
+  background-image: var(--arrow-color);
+  // background-image: none;
 }
+
 .card {
   border: none;
 
@@ -82,5 +54,24 @@ select::after {
     background-color: var(--element-color) !important;
     color: var(--text-color) !important;
     border: none;
+  }
+}
+
+@include xs {
+  .__search-bar {
+    width: 100%;
+  }
+  .__filter-select {
+    width: 50%;
+  }
+}
+// @include sm {}
+// @include md {}
+@include lg {
+  .__search-bar {
+    width: 75%;
+  }
+  .__filter-select {
+    width: 25%;
   }
 }

@@ -44,15 +44,17 @@ const CountryScreen: React.FC = () => {
         setcurrency(res.data.currencies);
         setlanguages(res.data.languages);
 
-        await MultipleCountryDetails(res.data.borders)
-          .then(res => {
-            setborderNames(
-              res.data.map((curr: typeCountry) => {
-                return { code: curr.alpha3Code, name: curr.name };
-              }),
-            );
-          })
-          .catch(err => console.error(err));
+        if (res.data.borders) {
+          await MultipleCountryDetails(res.data.borders)
+            .then(res => {
+              setborderNames(
+                res.data.map((curr: typeCountry) => {
+                  return { code: curr.alpha3Code, name: curr.name };
+                }),
+              );
+            })
+            .catch(err => console.error(err));
+        }
       });
     };
 
@@ -113,15 +115,12 @@ const CountryScreen: React.FC = () => {
             </div>
           </Row>
 
-          <div>
-            <span>Border Countries: </span>
-            <span>
-              {borderNames &&
-                borderNames.map(curr => {
-                  return BorderButton(curr);
-                })}
-            </span>
-          </div>
+          {borderNames.length > 0 && (
+            <div>
+              <span>Border Countries: </span>
+              <span>{borderNames.map(curr => BorderButton(curr))}</span>
+            </div>
+          )}
         </Col>
       </Row>
     </>

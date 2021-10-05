@@ -23,11 +23,11 @@ function App() {
   // const [theme, setTheme] = useState<`light` | `dark`>(`light`);
   // localStorage.setItem('currentTheme', theme);
 
-  // window
-  //   .matchMedia('(prefers-color-scheme: light)')
-  //   .addEventListener('change', e => {
-  //     setTheme(e.matches ? `light` : `dark`);
-  //   });
+  window
+    .matchMedia('(prefers-color-scheme: light)')
+    .addEventListener('change', e => {
+      setTheme(e.matches ? `light` : `dark`);
+    });
 
   const themeHandler = () => {
     if (theme === `light`) setTheme(`dark`);
@@ -42,11 +42,11 @@ function App() {
     document.body.classList.add(theme);
   }, [theme]);
 
-  useEffect(() => {
-    const currentTheme = localStorage.getItem('currentTheme');
-    if (currentTheme === 'light' || currentTheme === 'dark')
-      setTheme(currentTheme);
-  }, []);
+  // useEffect(() => {
+  //   const currentTheme = localStorage.getItem('currentTheme');
+  //   if (currentTheme === 'light' || currentTheme === 'dark')
+  //     setTheme(currentTheme);
+  // }, []);
   return (
     <>
       <Router>

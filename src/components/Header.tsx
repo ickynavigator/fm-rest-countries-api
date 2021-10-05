@@ -1,21 +1,19 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface T {
   theme: `light` | `dark`;
   themeHandler: () => void;
 }
-const Header: React.FC<T> = props => {
-  const { theme, themeHandler } = props;
+// const { theme, themeHandler } = props;
+const Header: React.FC<T> = () => (
+  <Navbar>
+    <Navbar.Brand href="/">
+      <h4>Where in the world?</h4>
+    </Navbar.Brand>
 
-  return (
-    <Navbar>
-      <Navbar.Brand href="/">
-        <h4>Where in the world?</h4>
-      </Navbar.Brand>
-
-      <div className="ms-auto">
+    {/* <div className="ms-auto">
         <span
           onClick={themeHandler}
           onKeyPress={e => {
@@ -29,9 +27,8 @@ const Header: React.FC<T> = props => {
           />{' '}
           Dark Mode
         </span>
-      </div>
-    </Navbar>
-  );
-};
+      </div> */}
+  </Navbar>
+);
 
 export default Header;

@@ -7,21 +7,21 @@ const CountryCard = (country: typeCountry) => {
     <Card className={`flex-fill shadow-sm`}>
       <Button
         href={`/country/${alpha3Code}`}
-        className="text-decoration-none p-0 w-100"
+        className={`text-decoration-none p-0 w-100`}
         variant="light"
       >
         <div>
-          <div className="h-25">
+          <div className={`h-25`}>
             <Card.Img
               variant="top"
               src={flags.png}
-              className="w-100"
+              className={`w-100`}
               height="195px"
             />
           </div>
 
           <div className="h-75">
-            <Card.Body className="text-start">
+            <Card.Body className={`text-start`}>
               <h5>{name}</h5>
 
               <div>

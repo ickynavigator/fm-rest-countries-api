@@ -14,7 +14,7 @@ const Header: React.FC<T> = props => {
         <h4>Where in the world?</h4>
       </Navbar.Brand>
 
-      <div className="ms-auto">
+      <div className={`ms-auto`}>
         <span onClick={themeHandler}>
           <FontAwesomeIcon
             icon={theme === 'light' ? ['far', 'moon'] : ['fas', 'moon']}

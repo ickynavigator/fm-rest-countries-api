@@ -66,7 +66,7 @@ const CountryScreen: React.FC = () => {
     <Container className={`px-3`}>
       <Button
         onClick={goBackBtn}
-        className={`px-4 my-4 __my-button shadow border-0`}
+        className={`px-4 my-1 my-md-4 __my-button shadow border-0`}
       >
         <FontAwesomeIcon icon={['fas', 'long-arrow-alt-left']} />
         <span className={`ps-3`}>Back</span>
@@ -76,10 +76,10 @@ const CountryScreen: React.FC = () => {
         <Col xs={12} md={6} className={``}>
           <img src={flag} alt={name} className={`__country-image`} />
         </Col>
-        <Col xs={12} md={6} className={`ps-5 my-auto`}>
+        <Col xs={12} md={6} className={`ps-sm-5 pt-5 pt-sm-0 my-auto`}>
           <h3>{name}</h3>
           <Row className={`pt-3 pb-5 countryRow`}>
-            <Col>
+            <Col xs={12} md={6}>
               <div>
                 <span>Native Name: </span>
                 <span>{nativeName}</span>
@@ -106,7 +106,7 @@ const CountryScreen: React.FC = () => {
               </div>
             </Col>
 
-            <Col>
+            <Col xs={12} md={6} className={`pt-5 pt-sm-0`}>
               <div>
                 <span>Top Level Domain: </span>
                 <span>{TLD.join(', ')}</span>

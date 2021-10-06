@@ -20,29 +20,42 @@ const CountryCard: React.FC<T> = props => {
           <div className="h-25">
             <Card.Img
               variant="top"
+              className="w-100 __home-card-img"
               src={flags.png}
-              className="w-100"
-              height="195px"
+              alt={name}
+              width="100%"
+              // height="195"
+              // alt={name}
             />
+            {/* <svg
+              className="w-100 __home-card-img"
+              // width="375px"
+              // height="195"
+              // alt={name}
+            >
+              <img src={flags.svg} alt={name} className="w-100 h-100" />
+            </svg> */}
           </div>
 
-          <div className="h-75">
+          <div className="h-75 countryRow">
             <Card.Body className="text-start">
               <h5>{name}</h5>
 
               <div>
                 <span>Population: </span>
-                <span>{population.toLocaleString()}</span>
+                <span className="__no-opacity">
+                  {population.toLocaleString()}
+                </span>
               </div>
 
               <div>
                 <span>Region: </span>
-                <span>{region}</span>
+                <span className="__no-opacity">{region}</span>
               </div>
 
               <div>
                 <span>Capital: </span>
-                <span>{capital}</span>
+                <span className="__no-opacity">{capital}</span>
               </div>
             </Card.Body>
           </div>

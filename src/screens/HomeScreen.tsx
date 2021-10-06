@@ -53,7 +53,7 @@ const HomeScreen: React.FC = () => {
 
   return (
     <>
-      <Row className="pb-5 gy-5" xs={1} md={2}>
+      <Row className="pb-5 gy-5 px-3 px-md-0 py-5 pt-md-2" xs={1} md={2}>
         <Col>
           <SearchBar setSearch={searchHandler} value={search} />
         </Col>
@@ -65,7 +65,7 @@ const HomeScreen: React.FC = () => {
       {errorMsg ? (
         <div>{errorMsg}</div>
       ) : (
-        <div className="px-3 p-md-0">
+        <div className="px-0 px-sm-3 p-md-0">
           <Row xs={1} sm={2} md={3} lg={4} className="g-5 p-5 p-sm-0 pt-0">
             {countries.map(country => (
               <Col className="h-100 d-flex" key={country.alpha3Code}>

@@ -7,7 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#2b3945" media="(prefers-color-scheme: dark)">
+  <!-- <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' https: localhost:* data:image/svg+xml; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:* data:image/svg+xml; connect-src https: localhost:* ws://localhost:* data:image/svg+xml; style-src 'unsafe-inline' https:; object-src 'none';"> -->
   <meta name="description" content="REST countries API" />
+  <link rel="preload" href="https://restcountries.com" />
+  <link rel="dns-prefetch" href="https://restcountries.com" />
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/assets/images/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/assets/manifest.json" />
   <title>Frontend Mentor | Rest countries API</title>

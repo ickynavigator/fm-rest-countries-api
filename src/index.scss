@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
+@import '~css-aspect-ratio/css-aspect-ratio';
 @import './_utils';
 
 #root {
@@ -83,6 +84,20 @@ div.countryRow {
       opacity: 1;
     }
   }
+}
+.__home-card-img {
+  // --aspect-ratio-w: 2;
+  // --aspect-ratio-h: 1.5;
+  aspect-ratio: 1.5 !important;
+  // max-height: 80%;
+  // min-height: 100%;
+  // background-color: red;
+  height: inherit;
+  // viewBox:"0 0 100 100"
+  box-sizing: content-box;
+}
+.__no-opacity {
+  opacity: 1 !important;
 }
 
 @include xs {
